@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe PagesController, type: :controller do
   render_views
 
+  before(:each) do
+    @base_title = "Mon site(helper) | "
+  end
+
   describe "GET #home" do
     it "returns http success" do
       get :home
@@ -11,7 +15,7 @@ RSpec.describe PagesController, type: :controller do
 
     it "devrait avoir le bon titre" do
       get :home
-      assert_select "title", "Accueil"
+      assert_select "title", @base_title + "Accueil"
     end
   end
 
@@ -22,7 +26,7 @@ RSpec.describe PagesController, type: :controller do
     end
     it "devrait avoir le bon titre" do
       get :contact
-      assert_select "title", "Contact"
+      assert_select "title", @base_title + "Contact"
     end
   end
 
@@ -33,7 +37,18 @@ RSpec.describe PagesController, type: :controller do
     end
     it "devrait avoir le bon titre" do
       get :about
-      assert_select "title", "A Propos"
+      assert_select "title", @base_title + "A Propos"
+    end
+  end
+
+  describe "GET #help" do
+    it "returns http success" do
+      get :help
+      expect(response).to have_http_status(:success)
+    end
+    it "devrait avoir le bon titre" do
+      get :help
+      assert_select "title", @base_title + "Aide"
     end
   end
 end

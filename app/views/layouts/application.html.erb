@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @titre %></title>
+    <title><%= titre %></title>
     <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag 'bootstrap/bootstrap.min', :media => 'screen' %>
+    <%= stylesheet_link_tag 'bootstrap/bootstrap-theme.min', :media => 'screen' %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
   </head>
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <header>
+        <%= image_tag("logo.png", :alt => "Application Exemple", :class => "round") %>
+        <nav class="round">
+          <ul>
+            <li><%= link_to "Accueil", root_path %></li>
+            <li><%= link_to "Aide", help_path %></li>
+            <li><%= link_to "Inscription", signup_path %></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="body">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
