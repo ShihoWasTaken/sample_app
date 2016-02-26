@@ -1,0 +1,13 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">    
+    <span class="sr-only">Error:</span>
+    <h4><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp;Erreur lors de la soumission</h4>
+    <p>Votre inscription n'a pas aboutie à cause de <%= pluralize(@user.errors.count, "erreur") %></p>
+    <p>Merci de corriger ces champs :</p>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

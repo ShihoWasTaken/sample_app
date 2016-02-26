@@ -26,4 +26,29 @@ RSpec.describe UsersController, type: :controller do
     get 'new'
     have_selector "title", @base_title + "Inscription"
   end
+
+  describe "POST 'create'" do
+    describe "echec" do
+      before(:each) do
+        @attr = { :nom => "", :email => "", :password => "",
+        :password_confirmation => "" }
+      end
+
+      it "ne devrait pas creer d'utilisateur" do
+        lambda do
+          post :create, :user => @attr
+        end.should_not change(User, :count)
+      end
+
+      it "devrait avoir le bon titre" do
+        post :create, :user => @attr
+        expect(response).to have_selector("title", :content => "Inscription")
+      end
+
+      it "devrait rendre la page 'new'" do
+        post :create, :user => @attr
+        expect(response).to render_template('new')
+      end
+    end
+  end
 end

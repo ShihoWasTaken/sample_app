@@ -1,0 +1,21 @@
+.logo
+{
+	max-height: 50px;
+}
+
+nav.navbar
+{
+	border-radius: 0;
+}
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer nav.navbar
+{
+	margin-bottom: 0;
+}

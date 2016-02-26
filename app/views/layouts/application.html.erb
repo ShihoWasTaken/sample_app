@@ -3,32 +3,44 @@
   <head>
     <title><%= titre %></title>
     <%= csrf_meta_tag %>
-    <%= stylesheet_link_tag 'bootstrap/bootstrap.min', :media => 'screen' %>
-    <%= stylesheet_link_tag 'bootstrap/bootstrap-theme.min', :media => 'screen' %>
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <link rel="stylesheet" media="screen" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="/bootstrap/css/bootstrap-theme.min.css">
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
   </head>
   <body>
-    <div class="container-fluid">
-      <header>
-	  <% logo = image_tag("logo.png", :alt => "Application exemple", :class => "round") %>
-	  <%= link_to logo, root_path %>
-        <nav class="round">
-          <ul>
-            <li><%= link_to "Accueil", root_path %></li>
-            <li><%= link_to "Aide", help_path %></li>
-            <li><%= link_to "Connexion", signin_path %></li>
-            <li><%= link_to "Inscription", signup_path %></li>
-          </ul>
-        </nav>
-      </header>
-      <div id="body">
-        <%= yield %>
-        <%= debug(params) if Rails.env.development? %>
-      </div>
-      <%= render 'layouts/footer' %>
+    <header>
+      <% logo = image_tag("logo.png", :alt => "Logo", :class => "logo") %>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <%= link_to logo, root_path %>
+          </div>
+          <div class="collapse navbar-collapse" id="collapse-1">
+            <ul class="nav navbar-nav">
+              <li><%= link_to "Accueil", root_path %></li>
+              <li><%= link_to "Aide", help_path %></li>
+              <li><%= link_to "Connexion", signin_path %></li>
+              <li><%= link_to "Inscription", signup_path %></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div id="body" class="container-fluid">
+      <%= yield %>
+      <div class="col-xs-12 col-md-6 col-md-offset-3"><br><%= debug(params) if Rails.env.development? %></div>      
     </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
