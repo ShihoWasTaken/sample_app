@@ -12,6 +12,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @age = ((Date.today - @user.birthdate) / 365).floor
   end
   def new
   	@user = User.new
@@ -26,10 +27,13 @@ class UsersController < ApplicationController
 	    render 'new'
     end
   end
+  def index
+    @users = User.all
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:nom, :email)
+    params.require(:user).permit(:nom, :email, :birthdate)
   end
 end

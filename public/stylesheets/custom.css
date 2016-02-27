@@ -1,3 +1,7 @@
+html, body
+{
+	height: 100%;
+}
 .logo
 {
 	max-height: 50px;
@@ -8,14 +12,9 @@ nav.navbar
 	border-radius: 0;
 }
 
-footer
+#body
 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-footer nav.navbar
-{
-	margin-bottom: 0;
+	min-height: 100%;
+	overflow: auto;
+	padding: 60px 0;
 }

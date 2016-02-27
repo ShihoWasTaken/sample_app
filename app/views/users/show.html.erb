@@ -3,8 +3,10 @@
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Informations du compte</div>
 	  <div class="panel-body">
-	  	Nom: <%= @user.nom %><br>
-	  	Email: <%= @user.email %>
+	  	Nom: <%= @user.nom %>
+	  	<br>Email: <%= @user.email %>
+	  	<br>Date de naissance: <%= @user.birthdate.strftime("%d/%m/%Y") %>
+	  	<br>Age: <%= @age %> ans
 	  </div>
 	</div>
 </div>
