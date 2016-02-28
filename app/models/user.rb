@@ -20,4 +20,7 @@ class User < ActiveRecord::Base
 						:format   => { :with => email_regex },
 						:uniqueness => { :case_sensitive => false }
 	validates :birthdate,	:presence => true
+	validates :watchedMovies,	:presence => true
+	validates :readBooks,	:presence => true
+	validates :readMoreBooks,	:presence => true
 end

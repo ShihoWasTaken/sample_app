@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   
+  get '/list_pdf',    :to => 'users#list_pdf'
   get '/users/:id/downloadCV', to: 'users#downloadCV', as: :downloadCV
   get '/signup',  :to => 'users#new'
   get '/contact', :to => 'pages#contact'

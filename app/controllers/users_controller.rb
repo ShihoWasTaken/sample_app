@@ -51,6 +51,17 @@ class UsersController < ApplicationController
     send_data data.read, filename: 'CV_' + @user.nom.concat('.pdf'), type: "application/pdf", disposition: 'attachment', stream: 'true', buffer_size: '4096' 
   end
 
+  #Génération d'un pdf contenant la liste de tous les utilisateurs
+  def list_pdf
+    @users = User.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "Utilisateurs"
+      end
+    end
+  end
+
   private
 
   def user_params

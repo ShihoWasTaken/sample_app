@@ -17,6 +17,15 @@ nav.navbar
 	min-height: 100%;
 	overflow: auto;
 	padding: 60px 0;
+	background: url('../images/index.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#content
+{
+	background: white;
+	padding: 15px 60px;
 }
 
 iframe
