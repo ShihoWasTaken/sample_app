@@ -2,11 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  nom        :string
-#  email      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  nom           :string
+#  email         :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  birthdate     :date
+#  readMoreBooks :boolean
 #
 
 class UsersController < ApplicationController
@@ -21,6 +23,19 @@ class UsersController < ApplicationController
   def create
 	  @user = User.new(user_params)
     if @user.save
+       # Si un CV a été uploadé
+      if(params[:user][:file] != nil && params[:user][:file] != "")
+        # On récupère nom du fichier
+        uploaded_io = params[:user][:file]
+        # On l'enregistre dans le dossier public/uploads/
+        File.open(Rails.root.join('public', 'uploads', @user.id.to_s + ".pdf"), 'wb') do |file|
+        file.write(uploaded_io.read)
+        # On ajoute le nom du fichier à l'User correspondant
+        params[:user][:cvPath] = @user.id.to_s + ".pdf"
+        # On actualise les infos de l'User dans la BD
+        @user.update_attributes(user_params)
+        end
+      end
 	    redirect_to @user
     else
 	    @titre = "Inscription"
@@ -30,10 +45,15 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+  def downloadCV
+    @user = User.find(params[:id])
+    data = File.open(Rails.root.join('public', 'uploads', @user.cvPath), 'r')
+    send_data data.read, filename: 'CV_' + @user.nom.concat('.pdf'), type: "application/pdf", disposition: 'attachment', stream: 'true', buffer_size: '4096' 
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:nom, :email, :birthdate)
+    params.require(:user).permit(:nom, :email, :birthdate, :watchedMovies, :readBooks, :readMoreBooks, :cvPath)
   end
 end

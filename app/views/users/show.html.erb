@@ -1,12 +1,32 @@
-<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-2 col-lg-offset-3">
 	<div class="alert alert-success" role="alert">Merci <%= @user.nom %>, votre inscription a bien été prise en compte</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Informations du compte</div>
 	  <div class="panel-body">
 	  	Nom: <%= @user.nom %>
 	  	<br>Email: <%= @user.email %>
-	  	<br>Date de naissance: <%= @user.birthdate.strftime("%d/%m/%Y") %>
-	  	<br>Age: <%= @age %> ans
+	  	<br>Né(e) le <%= @user.birthdate.strftime("%d/%m/%Y") %> (<%= @age %> ans)
+	  	<br>Films: <%= @user.watchedMovies %>
+	  	<br>Livres: <%= @user.readBooks %>
+	  	<% if @user.readMoreBooks %>
+	  		<br>Veut lire plus de livres
+  		<% else %>
+  			<br>Ne veut pas lire plus de livres
+		<% end %>
+	  	<% if !@user.cvPath.nil? %>
+	  		<br>
+	  		<%= link_to "Voir CV", "/uploads/#{@user.cvPath}", :class => "btn btn-default", :target => "_blank" %>
+	  		<%= link_to "Télécharger CV", "#{@user.id}/downloadCV", :class => "btn btn-default" %>
+	  	<% else %>
+	  		<br>Aucun CV déposé
+		<% end %>
 	  </div>
 	</div>
+</div>
+<div class="col-lg-4">
+  <iframe class="embed-responsive-item" src="/uploads/<%= @user.cvPath %>"></iframe>
+</div>
+
+<div class="col-lg-4">
+  <img src="/uploads/<%= @user.cvPath %>" />
 </div>

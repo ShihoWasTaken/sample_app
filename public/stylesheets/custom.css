@@ -18,3 +18,9 @@ nav.navbar
 	overflow: auto;
 	padding: 60px 0;
 }
+
+iframe
+{
+    width: 290px;
+    height: 406px;
+}
