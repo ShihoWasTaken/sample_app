@@ -1,14 +1,117 @@
-<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4" id="content">
-	<h1>Liste des utilisateurs du site</h1>
-    <%= link_to "Exporter en PDF", list_pdf_path(:format => "pdf"), :target => '_blank', :class => 'btn btn-default' %>
-	<% @users.each do |user| %>
-	<div class="panel panel-primary">
-	  <div class="panel-heading"><%= user.nom %></div>
-	  <div class="panel-body">
-	  	Nom: <%= user.nom %>
-	  	<br>Email: <%= user.email %>
-	  	<br>Date de naissance: <%= user.birthdate.strftime("%d/%m/%Y") %>
-	  </div>
+<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1" id="content">
+	<div class="col-md-4">
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+		<div id="container" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px"></div>
 	</div>
-	<% end %>
+	<div class="col-md-4">
+		<h1>Liste des utilisateurs du site</h1>
+	    <%= link_to "Exporter en PDF", list_pdf_path(:format => "pdf"), :target => '_blank', :class => 'btn btn-default' %>
+		<% @users.each do |user| %>
+		<div class="panel panel-primary">
+		  <div class="panel-heading"><%= user.nom %></div>
+		  <div class="panel-body">
+		  	<%= link_to  "#{user.nom}", user %>
+		  	Nom: 		  	<br>Email: <%= user.email %>
+		  	<br>Date de naissance: <%= user.birthdate.strftime("%d/%m/%Y") %>
+		  </div>
+		</div>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<div  id='chart_div'></div>
+	</div>
+
 </div>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Element', 'Density', { role: 'style' }],
+        ['Lecteurs', 60, 'gold'],
+        ['Non-lecteurs', 40, 'color: #e5e4e2' ]
+      ]);
+
+      var options = {
+        title: "Pourcentage des lecteurs/non-lecteurs parmi les utilisateurs",
+        bar: {groupWidth: '50%'},
+        legend: 'none',
+		width: '100%',
+		height: 500,
+      };
+
+      var chart_div = document.getElementById('chart_div');
+      var chart = new google.visualization.ColumnChart(chart_div);
+
+      // Wait for the chart to finish drawing before calling the getImageURI() method.
+      google.visualization.events.addListener(chart, 'ready', function () {
+        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
+      });
+
+      chart.draw(data, options);
+
+  }
+  </script>
+
+<script type="text/javascript">
+$(function () {
+ $('#container').highcharts({
+
+        chart: {
+            type: 'boxplot'
+        },
+
+        title: {
+            text: 'Highcharts Box Plot Example'
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        xAxis: {
+            categories: ['Cinéma', 'TV', 'Ordinateur', 'Tablette'],
+            title: {
+                text: 'Support de visionnage'
+            }
+        },
+
+        yAxis: {
+            title: {
+                text: 'Observations'
+            },
+            plotLines: [{
+                value: 932,
+                color: 'red',
+                width: 1,
+                label: {
+                    text: 'Theoretical mean: 932',
+                    align: 'center',
+                    style: {
+                        color: 'gray'
+                    }
+                }
+            }]
+        },
+
+        series: [{
+            name: 'Observations',
+            data: [
+                [7, 8, 8, 8, 9],
+                [7, 8, 9, 9, 10],
+                [7, 2, 8, 8, 9],
+                [7, 8, 6, 8, 9]
+            ],
+            tooltip: {
+                headerFormat: '<em>Support de visionnage: {point.key}</em><br/>'
+            }
+        }]
+
+    });
+});
+</script>

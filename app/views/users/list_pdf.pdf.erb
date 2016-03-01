@@ -41,33 +41,37 @@
             <table>
                 <tbody>
                     <tr>
-                        <td class="label">Nom:</td>
+                        <td class="label">Nom :</td>
                         <td class="infos"><%= user.nom %></td>
                     </tr>
                     <tr>
-                        <td class="label">Email</td>
+                        <td class="label">Email :</td>
                         <td class="infos"><%= user.email %></td>
                     </tr>
                     <tr>
-                        <td class="label">Date de naissance</td>
+                        <td class="label">Date de naissance :</td>
                         <td class="infos"><%= user.birthdate %></td>
                     </tr>
                     <tr>
-                        <td class="label">Nombre de films vus par semaine</td>
+                        <td class="label">Nombre de films vus par semaine :</td>
                         <td class="infos"><%= user.watchedMovies %></td>
                     </tr>
                     <tr>
-                        <td class="label">Support favori pour visionner les films</td>
+                        <td class="label">Support favori pour visionner les films :</td>
                         <td class="infos"><%= user.nom %></td>
                     </tr>
                     <tr>
-                        <td class="label">Nombre de livre lus par semaine</td>
+                        <td class="label">Nombre de livre lus par semaine :</td>
                         <td class="infos"><%= user.readBooks %></td>
                     </tr>
                     <tr>
-                        <td class="label">Aimerait lire plus de livres</td>
+                        <td class="label">Aimerait lire plus de livres :</td>
                         <td class="infos">
-                            <%= if(user.readMoreBooks) %>
+                            <% if(user.readMoreBooks) %>
+                            Oui
+                            <% else %>
+                            Non
+                            <% end %>
                         </td>
                     </tr>
                 </tbody>                
