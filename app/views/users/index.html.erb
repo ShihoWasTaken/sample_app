@@ -6,19 +6,17 @@
 		<div id="container" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px"></div>
 	</div>
 	<div class="col-md-4">
-		<h1>Liste des utilisateurs du site</h1>
 	    <%= link_to "Exporter en PDF", list_pdf_path(:format => "pdf"), :target => '_blank', :class => 'btn btn-default' %>
-		<% @users.each do |user| %>
+		
 		<div class="panel panel-primary">
-		  <div class="panel-heading"><%= user.nom %></div>
+		  <div class="panel-heading">Liste des utilisateurs</div>
 		  <div class="panel-body">
-		  	<%= link_to  "#{user.nom}", user %>
-		  	Nom: 		  	<br>Email: <%= user.email %>
-		  	<br>Date de naissance: <%= user.birthdate.strftime("%d/%m/%Y") %>
+			<% @users.each do |user| %>
+				<%= link_to  "#{user.nom}", user %>, <%= ((Date.today - user.birthdate) / 365).floor %> ans<br>
+			<% end %>
 		  </div>
 		</div>
-		<% end %>
-	</div>
+			</div>
 	<div class="col-md-4">
 		<div  id='chart_div'></div>
 	</div>
