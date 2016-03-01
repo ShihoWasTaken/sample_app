@@ -24,8 +24,20 @@
             <%= f.date_field :birthdate, :class => "form-control" %>
         </div>
         <div class="form-group">
-            <%= f.label :watchedMovies, "Moyenne des films vu par semaine" %><br />
-            <%= f.number_field :watchedMovies, :min => 0, :class => "form-control" %>
+            <%= f.label :watchedMoviesCinema, "Moyenne des films vu par semaine au cinémaa" %><br />
+            <%= f.number_field :watchedMoviesCinema, :min => 0, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :watchedMoviesTV, "Moyenne des films vu par semaine à la TV" %><br />
+            <%= f.number_field :watchedMoviesTV, :min => 0, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :watchedMoviesComputer, "Moyenne des films vu par semaine sur ordinateur" %><br />
+            <%= f.number_field :watchedMoviesComputer, :min => 0, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :watchedMoviesTablet, "Moyenne des films vu par semaine sur tablette" %><br />
+            <%= f.number_field :watchedMoviesTablet, :min => 0, :class => "form-control" %>
         </div>
         <div class="form-group">
             <%= f.label :readBooks, "Moyenne des livres lu par semaine"%><br />

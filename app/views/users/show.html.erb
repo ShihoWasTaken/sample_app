@@ -6,7 +6,7 @@
 			Nom: <%= @user.nom %>
 			<br>Email: <%= @user.email %>
 			<br>Né(e) le <%= @user.birthdate.strftime("%d/%m/%Y") %> (<%= @age %> ans)
-			<br>Films: <%= @user.watchedMovies %>
+			<br>Films: <%= @user.watchedMoviesCinema %>
 			<br>Livres: <%= @user.readBooks %>
 			<% if @user.readMoreBooks %>
 				<br>Veut lire plus de livres
