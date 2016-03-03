@@ -41,6 +41,11 @@ nav.navbar li:hover
 	color: white;
 }
 
+ul.nav.navbar-nav 
+{
+    background-color: white;
+}
+
 #body
 {
 	min-height: 100%;
@@ -147,3 +152,42 @@ form
 	margin: 0 auto;
 }
 
+/********************************************************
+*               Footer                            *
+********************************************************/
+/* Afin d'éviter le collapse du footer */
+@media(max-width:767px)
+{
+	footer ul.nav.navbar-nav 
+	{
+	    height: 50px;
+	    margin: 0;
+	}
+
+	footer .nav>li
+	{
+	    height: 50px;
+	    margin: 0;    
+	    padding: 5px 0;
+	}
+
+	footer .navbar-collapse.collapse 
+	{
+		display: block!important;
+	}
+
+	footer .navbar-nav>li, footer .navbar-nav
+	{
+		float: left !important;
+	}
+
+	footer .navbar-nav.navbar-right:last-child
+	{
+		margin-right: -15px !important;
+	}
+
+	footer .navbar-right 
+	{
+		float: right!important;
+	}
+}
