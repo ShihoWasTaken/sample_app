@@ -1,10 +1,29 @@
+@font-face {
+	font-family: 'HelveticaNeueLTStd';
+	src: url('../fonts.HelveticaNeueLTStd Lt.otf') format('truetype')
+	font-weight: normal;
+	font-style: normal;
+}
+
 html, body
 {
 	height: 100%;
+	font-family: 'HelveticaNeueLTStd';
+	font-size: 100%;
 }
 .logo
 {
 	max-height: 50px;
+}
+
+nav
+{
+	height: 50px
+}
+
+footer nav .container-fluid
+{
+	padding-left: 0;
 }
 
 nav.navbar
@@ -12,12 +31,22 @@ nav.navbar
 	border-radius: 0;
 }
 
+nav.navbar li:hover
+{
+	background-color: firebrick;
+}
+
+.navbar-default .navbar-nav>li:hover>a
+{
+	color: white;
+}
+
 #body
 {
 	min-height: 100%;
 	overflow: auto;
-	padding: 60px 0;
-	background: url('../images/index.jpg');
+	padding: 75px 0;
+	background: url('../images/minions.jpg');
     background-attachment: fixed;
     background-size: cover;
 }
@@ -25,11 +54,96 @@ nav.navbar
 #content
 {
 	background: white;
+    padding: 0;
+}
+
+
+#content p
+{
     padding: 10px 20px;
 }
 
 iframe
 {
     width: 290px;
-    height: 406px;
+    height: 420px;
 }
+
+#chart_div
+{
+	height: 500px;
+}
+
+h1
+{
+	background-color: firebrick;
+	color: white;
+	margin: 0;
+	padding: 5px 10px;
+	margin-bottom: 10px;
+	font-family: Times;
+}
+
+.btn-red, .btn-nav, .btn-table
+{
+	background-color: firebrick;
+	color: white;
+	border-radius: 0;
+	margin: 10px;
+    line-height: 1.3333333;
+}
+
+.btn-table
+{
+	margin: 0;
+}
+
+.btn-red
+{
+	padding: 10px 16px;
+    font-size: 18px;
+}
+
+.btn-red:hover, .btn-nav:hover, .btn-table:hover
+{
+	background-color: crimson;
+	color: white;
+}
+
+form
+{
+	padding: 20px 70px;
+}
+
+#list-users
+{
+	padding: 5px 20px;
+}
+
+.center
+{
+	text-align: center
+}
+
+.brand, .brand:hover
+{
+	text-decoration: none;
+	color: crimson;
+}
+
+.brandName
+{	
+	font-size: 24px;
+	padding: 0 10px;
+}
+
+/********************************************************
+*               Page Contact                            *
+********************************************************/
+#contactInfos
+{
+	padding: 10px;
+	width: 280px;
+	margin: 0 auto;
+}
+

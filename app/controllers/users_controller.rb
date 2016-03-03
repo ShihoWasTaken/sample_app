@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         @user.update_attributes(user_params)
         end
       end
-	    redirect_to @user
+      redirect_to user_path(@user, just_created: true)
     else
 	    @titre = "Inscription"
 	    render 'new'
@@ -60,6 +60,33 @@ class UsersController < ApplicationController
         render :pdf => "Utilisateurs"
       end
     end
+  end
+
+  def stats
+    @users = User.all
+    cine = Array.new
+    tv = Array.new
+    comp = Array.new
+    tab = Array.new
+    lec = 0
+    @users.each do |user|
+      cine.push(user.watchedMoviesCinema)
+      tv.push(user.watchedMoviesTV)
+      comp.push(user.watchedMoviesComputer)
+      tab.push(user.watchedMoviesTablet)
+      if(user.readBooks > 0)
+        lec += 1
+      end
+    end
+    @cinemaArray = cine.join(',')
+    @TVArray = tv.join(',')
+    @computerArray = comp.join(',')
+    @tabletArray = tab.join(',')
+    @lecteurs = (lec.to_f * 100.to_f / @users.count.to_f).round(2)
+    @nonLecteurs = ((@users.count - lec).to_f * 100.to_f / @users.count.to_f).round(2)
+    @totalLecteurs = lec
+    @totalNonLecteurs = @users.count - lec
+    @totalUsers = @users.count
   end
 
   private

@@ -1,115 +1,52 @@
-<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-10 col-lg-offset-1" id="content">
-	<div class="col-md-4">
-		<script src="https://code.highcharts.com/highcharts.js"></script>
-		<script src="https://code.highcharts.com/highcharts-more.js"></script>
-
-		<div id="container" style="height: 400px; margin: auto; min-width: 310px; max-width: 600px"></div>
-	</div>
-	<div class="col-md-4">
-	    <%= link_to "Exporter en PDF", list_pdf_path(:format => "pdf"), :target => '_blank', :class => 'btn btn-default' %>
-		
-		<div class="panel panel-primary">
-		  <div class="panel-heading">Liste des utilisateurs</div>
-		  <div class="panel-body">
-			<% @users.each do |user| %>
-				<%= link_to  "#{user.nom}", user %>, <%= ((Date.today - user.birthdate) / 365).floor %> ans<br>
-			<% end %>
-		  </div>
-		</div>
-			</div>
-	<div class="col-md-4">
-		<div  id='chart_div'></div>
-	</div>
-
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css">
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+<div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3" id="content">
+  <h1>Liste des utilisateurs</h1>
+  <%= link_to "Exporter en PDF", list_pdf_path(:format => "pdf"), :target => '_blank', :class => 'btn btn-red' %>
+  <div id="list-users">
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Age</th>
+                <th>CV</th>
+                <th>Inscrit le</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.nom %></td>
+              <td><%= ((Date.today - user.birthdate) / 365).floor %></td>
+              <td>
+                <% if(user.cvPath.blank?) %>
+                  Absent
+                <% else %>
+                  Disponible
+                <% end %>
+              </td>
+              <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
+              <td class="center">
+                <%= link_to user, :target => '_blank', :class => "btn btn-table" do %>
+                  <i class='fa fa-eye'></i> Voir
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
 </div>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-  <script type="text/javascript">
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-
-      var data = google.visualization.arrayToDataTable([
-        ['Element', 'Density', { role: 'style' }],
-        ['Lecteurs', 60, 'gold'],
-        ['Non-lecteurs', 40, 'color: #e5e4e2' ]
-      ]);
-
-      var options = {
-        title: "Pourcentage des lecteurs/non-lecteurs parmi les utilisateurs",
-        bar: {groupWidth: '50%'},
-        legend: 'none',
-		width: '100%',
-		height: 500,
-      };
-
-      var chart_div = document.getElementById('chart_div');
-      var chart = new google.visualization.ColumnChart(chart_div);
-
-      // Wait for the chart to finish drawing before calling the getImageURI() method.
-      google.visualization.events.addListener(chart, 'ready', function () {
-        chart_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
-      });
-
-      chart.draw(data, options);
-
-  }
-  </script>
-
-<script type="text/javascript">
-$(function () {
- $('#container').highcharts({
-
-        chart: {
-            type: 'boxplot'
-        },
-
-        title: {
-            text: 'Highcharts Box Plot Example'
-        },
-
-        legend: {
-            enabled: false
-        },
-
-        xAxis: {
-            categories: ['Cinéma', 'TV', 'Ordinateur', 'Tablette'],
-            title: {
-                text: 'Support de visionnage'
-            }
-        },
-
-        yAxis: {
-            title: {
-                text: 'Observations'
-            },
-            plotLines: [{
-                value: 932,
-                color: 'red',
-                width: 1,
-                label: {
-                    text: 'Theoretical mean: 932',
-                    align: 'center',
-                    style: {
-                        color: 'gray'
-                    }
-                }
-            }]
-        },
-
-        series: [{
-            name: 'Observations',
-            data: [
-                [7, 8, 8, 8, 9],
-                [7, 8, 9, 9, 10],
-                [7, 2, 8, 8, 9],
-                [7, 8, 6, 8, 9]
-            ],
-            tooltip: {
-                headerFormat: '<em>Support de visionnage: {point.key}</em><br/>'
-            }
-        }]
-
-    });
-});
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable( {
+        "language": {
+            "url": "/dataTable/French.json"
+        }
+    } );
+} );
 </script>

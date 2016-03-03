@@ -29,7 +29,11 @@ $(function () {
     $('.error-li').each(function () {
     var text = $(this).text();
         text = text.replace("Birthdate","Date de naissance");
-        text = text.replace("Watchedmovies","Moyenne des films vu par semaine");
+        text = text.replace("Watchedmovies","Moyenne des films vu par semaine ");
+        text = text.replace("cinema","au cinéma");
+        text = text.replace("tv","à la TV");
+        text = text.replace("computer","sur ordinateur");
+        text = text.replace("tablet","sur tablette");
         text = text.replace("Readbooks","Moyenne des livres lu par semaine");
         text = text.replace("Readmorebooks","Lire plus de livres");
         $(this).text(text);
