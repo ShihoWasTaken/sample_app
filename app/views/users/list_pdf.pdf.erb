@@ -35,7 +35,7 @@
         </style>
     </head>
     <body onload='number_pages'>        
-        <div class="inlb"><h1><%= wicked_pdf_image_tag 'images/logo.png' %>Liste des utilisateurs inscrits</h1></div>
+        <div class="inlb"><h1><%= wicked_pdf_image_tag 'images/logo.png' %>Liste des utilisateurs</h1></div>
         <% @users.each do |user| %><hr>
             <h2>Utilisateur n°<%= user.id %></h2>
             <table>

@@ -2,11 +2,36 @@
 *                      Polices                          *
 ********************************************************/
 @font-face {
-	font-family: 'HelveticaNeueLTStd';
-	src: url('../fonts.HelveticaNeueLTStd Lt.otf') format('truetype')
+	font-family: 'LinuxLibertine';
+	src: url('../fonts/LinLibertine_RB.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+  font-family: 'Cantarell';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Cantarell.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+h1
+{
+	font-family: 'LinuxLibertine';
+}
+
+nav
+{
+	font-family: 'LinuxLibertine';
+	font-size: 105%;
+}
+
+body
+{
+	font-family: 'Cantarell';
+}
+
 
 /********************************************************
 *                      General                          *
@@ -14,8 +39,7 @@
 html, body
 {
 	height: 100%;
-	font-family: 'HelveticaNeueLTStd';
-	font-size: 100%;
+	font-size: 105%;
 }
 
 .center
@@ -51,7 +75,7 @@ h1
 	margin: 0;
 	padding: 5px 10px;
 	margin-bottom: 10px;
-	font-family: Times;
+	/*font-family: 'LinuxLibertine';*/
 }
 
 /********************************************************
@@ -63,12 +87,23 @@ iframe
     height: 420px;
 }
 
+.success
+{
+	color: green;
+}
+
+.error
+{
+	color: red;
+}
 /********************************************************
 *                        Stats                          *
 ********************************************************/
-#chart_div
+
+
+#chart_div img
 {
-	height: 500px;
+	width: 100%;
 }
 
 /********************************************************
@@ -143,6 +178,7 @@ nav
 {	
 	font-size: 24px;
 	padding: 0 10px;
+    vertical-align: middle;
 }
 
 /********************************************************
@@ -210,7 +246,7 @@ footer nav .container-fluid
 ********************************************************/
 form
 {
-	padding: 20px 70px;
+	padding: 0 70px;
 }
 
 .form-control, .input-group-addon
@@ -229,4 +265,12 @@ form
 #list-users
 {
 	padding: 5px 20px;
+}
+
+/********************************************************
+*                     A propos                          *
+********************************************************/
+#photo-about
+{
+	width: 100%;
 }

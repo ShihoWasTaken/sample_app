@@ -69,6 +69,8 @@ class UsersController < ApplicationController
     comp = Array.new
     tab = Array.new
     lec = 0
+    aimeLire = 0
+    aimePasLire = 0
     @users.each do |user|
       cine.push(user.watchedMoviesCinema)
       tv.push(user.watchedMoviesTV)
@@ -76,6 +78,11 @@ class UsersController < ApplicationController
       tab.push(user.watchedMoviesTablet)
       if(user.readBooks > 0)
         lec += 1
+      end
+      if(user.readMoreBooks)
+        aimeLire += 1
+      else
+        aimePasLire += 1
       end
     end
     @cinemaArray = cine.join(',')
@@ -87,6 +94,9 @@ class UsersController < ApplicationController
     @totalLecteurs = lec
     @totalNonLecteurs = @users.count - lec
     @totalUsers = @users.count
+    # Pourcentage de gens voulant lire plus ou non
+    @aimeLire = aimeLire
+    @aimePasLire = aimePasLire
   end
 
   private

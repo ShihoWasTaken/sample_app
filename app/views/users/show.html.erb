@@ -5,22 +5,21 @@
 	<h1>Informations - <%= @user.nom %></h1>
 	<div>
 		<div class="col-md-5 col-lg-5">
-			Nom: <%= @user.nom %>
-			<br>Email: <%= @user.email %>
-			<br>Né(e) le <%= @user.birthdate.strftime("%d/%m/%Y") %> (<%= @age %> ans)
-			<br>Films vu:
+			<i class="fa fa-user"></i>&nbsp; <%= @user.nom %>
+			<br><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %>
+			<br><i class="fa fa-birthday-cake"></i>&nbsp;Né(e) le <%= @user.birthdate.strftime("%d/%m/%Y") %> (<%= @age %> ans)
+			<br><br>Nombre moyen de films vus par semaine:
 			<ul>
-				<li>au cinéma: <%= @user.watchedMoviesCinema %></li>
-				<li>à la TV: <%= @user.watchedMoviesTV %></li>
-				<li>sur ordinateur: <%= @user.watchedMoviesComputer %></li>
-				<li>sur tablette:<%= @user.watchedMoviesTablet %> </li>
+				<li><i class="fa fa-film"></i> au cinéma: <%= @user.watchedMoviesCinema %></li>
+				<li><i class="fa fa-tv"></i> à la TV: <%= @user.watchedMoviesTV %></li>
+				<li><i class="fa fa-desktop"></i> sur ordinateur: <%= @user.watchedMoviesComputer %></li>
+				<li><i class="fa fa-tablet"></i> sur tablette:<%= @user.watchedMoviesTablet %> </li>
 			</ul>
-
-			<br>Livres: <%= @user.readBooks %>
+			<br><i class="fa fa-book"></i>&nbsp;Nombre moyen de livres lus par semaine: <%= @user.readBooks %><br><br>
 			<% if @user.readMoreBooks %>
-				<br>Veut lire plus de livres
+				<div class="success"><i class="fa fa-thumbs-up"></i> Veut lire plus de livres</div>
 			<% else %>
-				<br>Ne veut pas lire plus de livres
+				<div class="error"><i class="fa fa-thumbs-down"></i> Ne veut pas lire plus de livres</div>
 			<% end %>
 		</div>
 		<div class="col-md-7 col-lg-7 center">
