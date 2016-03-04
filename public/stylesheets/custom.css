@@ -1,3 +1,6 @@
+/********************************************************
+*                      Polices                          *
+********************************************************/
 @font-face {
 	font-family: 'HelveticaNeueLTStd';
 	src: url('../fonts.HelveticaNeueLTStd Lt.otf') format('truetype')
@@ -5,45 +8,19 @@
 	font-style: normal;
 }
 
+/********************************************************
+*                      General                          *
+********************************************************/
 html, body
 {
 	height: 100%;
 	font-family: 'HelveticaNeueLTStd';
 	font-size: 100%;
 }
-.logo
-{
-	max-height: 50px;
-}
 
-nav
+.center
 {
-	height: 50px
-}
-
-footer nav .container-fluid
-{
-	padding-left: 0;
-}
-
-nav.navbar
-{
-	border-radius: 0;
-}
-
-nav.navbar li:hover
-{
-	background-color: firebrick;
-}
-
-.navbar-default .navbar-nav>li:hover>a
-{
-	color: white;
-}
-
-ul.nav.navbar-nav 
-{
-    background-color: white;
+	text-align: center
 }
 
 #body
@@ -62,21 +39,9 @@ ul.nav.navbar-nav
     padding: 0;
 }
 
-
 #content p
 {
     padding: 10px 20px;
-}
-
-iframe
-{
-    width: 290px;
-    height: 420px;
-}
-
-#chart_div
-{
-	height: 500px;
 }
 
 h1
@@ -89,6 +54,26 @@ h1
 	font-family: Times;
 }
 
+/********************************************************
+*                    Profil user                        *
+********************************************************/
+iframe
+{
+    width: 290px;
+    height: 420px;
+}
+
+/********************************************************
+*                        Stats                          *
+********************************************************/
+#chart_div
+{
+	height: 500px;
+}
+
+/********************************************************
+*                     Boutons                           *
+********************************************************/
 .btn-red, .btn-nav, .btn-table
 {
 	background-color: firebrick;
@@ -115,19 +100,37 @@ h1
 	color: white;
 }
 
-form
+/********************************************************
+*                   Navigation                          *
+********************************************************/
+nav.navbar
 {
-	padding: 20px 70px;
+	border-radius: 0;
 }
 
-#list-users
+nav.navbar li:hover
 {
-	padding: 5px 20px;
+	background-color: firebrick;
 }
 
-.center
+.navbar-default .navbar-nav>li:hover>a
 {
-	text-align: center
+	color: white;
+}
+
+ul.nav.navbar-nav 
+{
+    background-color: white;
+}
+
+.logo
+{
+	max-height: 50px;
+}
+
+nav
+{
+	height: 50px
 }
 
 .brand, .brand:hover
@@ -152,9 +155,19 @@ form
 	margin: 0 auto;
 }
 
+.fa-mobile
+{
+	vertical-align: middle;
+}
+
 /********************************************************
-*               Footer                            *
+*                     Footer                            *
 ********************************************************/
+footer nav .container-fluid
+{
+	padding-left: 0;
+}
+
 /* Afin d'éviter le collapse du footer */
 @media(max-width:767px)
 {
@@ -190,4 +203,30 @@ form
 	{
 		float: right!important;
 	}
+}
+
+/********************************************************
+*                      Signup                           *
+********************************************************/
+form
+{
+	padding: 20px 70px;
+}
+
+.form-control, .input-group-addon
+{
+	border-radius: 0;
+}
+
+/********************************************************
+*                      Membres                          *
+********************************************************/
+.pagination>li:last-child>a, .pagination>li:first-child>a
+{
+	border-radius: 0;
+}
+
+#list-users
+{
+	padding: 5px 20px;
 }

@@ -25,5 +25,5 @@ class User < ActiveRecord::Base
 	validates :watchedMoviesComputer,	:presence => true
 	validates :watchedMoviesTablet,	:presence => true
 	validates :readBooks,	:presence => true
-	validates :readMoreBooks,	:presence => true
+	validates :readMoreBooks,	inclusion: [true, false]
 end

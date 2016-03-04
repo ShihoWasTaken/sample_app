@@ -37,5 +37,21 @@ $(function () {
         text = text.replace("Readbooks","Moyenne des livres lu par semaine");
         text = text.replace("Readmorebooks","Lire plus de livres");
         $(this).text(text);
-    });   
+    }); 
+
+    // On affiche "je veux lire plus de livres" si l'utilisateur lis plus de 3 livres
+    $('#readMoreBooks').hide();    
+    $('#user_readBooks').on('input',function(e){
+        if($(this).val() > 3)
+        {
+            $('#readMoreBooks').show();
+        }
+        else
+        {
+            $('#readMoreBooks').hide();
+            $('#user_readMoreBooks_false').prop( "checked", true );
+        }
+    });
+
+    $('[data-toggle="popover"]').popover();
 });
