@@ -20,33 +20,7 @@
   </head>
   <body>
     <!-- Menu de navigation -->
-    <header>
-      <% logo = image_tag("logo.png", :alt => "Logo", :class => "logo") %>
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <%= link_to root_path, :class => "brand" do %>
-                  <span><%= logo %><span class="brandName">Gem Le Cine</span></span>
-              <% end %>     
-          </div>
-          <div class="collapse navbar-collapse" id="collapse-1">
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Accueil", root_path %></li>
-              <li><%= link_to "Membres", users_path %></li>
-              <li><%= link_to "Statistiques", stats_path %></li>              
-              <li><%= link_to "Aide", help_path %></li>              
-              <li><%= link_to "Inscription", signup_path %></li>
-            </ul>            
-          </div>
-        </div>
-      </nav>
-    </header>
+    <%= render 'layouts/header' %>
     <div id="body" class="container-fluid">
       <%= yield %>     
     </div>

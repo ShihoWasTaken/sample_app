@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users
   
   get '/stats',    :to => 'users#stats'
-  get '/list_pdf',    :to => 'users#list_pdf'
+  get '/database_dump',    :to => 'users#database_dump'
   get '/users/:id/downloadCV', to: 'users#downloadCV', as: :downloadCV
   get '/signup',  :to => 'users#new'
   get '/contact', :to => 'pages#contact'

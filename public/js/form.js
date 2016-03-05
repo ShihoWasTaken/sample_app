@@ -4,7 +4,7 @@ $(function () {
         viewMode: 'years',
         locale: 'fr',
         format: 'L',
-        maxDate: $.now()
+        maxDate: moment().subtract(18,'years').calendar()
     });
 
     // On récupère la date du vrai champ et on met à jour le datePicker si elle n'est pas nulle
@@ -15,6 +15,11 @@ $(function () {
         var splitted = date.split("-");
         var dateFormatted = splitted[2] + "/" + splitted[1] + "/" + splitted[0];
         $('#datetimepicker').children('input').val(dateFormatted);
+    }
+    /* Nécessaire à cause de l'option maxDate */
+    else
+    {
+        $('#datetimepicker').children('input').val('');
     }
 
     // A chaque fois que l'on change la date du DatePicker, on met à jour la date du vrai champ caché
@@ -44,14 +49,16 @@ $(function () {
     $('#user_readBooks').on('input',function(e){
         if($(this).val() > 3)
         {
-            $('#readMoreBooks').show();
+            $('#readMoreBooks').show( "fast");
         }
         else
         {
-            $('#readMoreBooks').hide();
+            $('#readMoreBooks').hide( "fast");
             $('#user_readMoreBooks_false').prop( "checked", true );
         }
     });
 
-    $('[data-toggle="popover"]').popover();
+
+    $("#new_user").bootstrapValidator();
+
 });

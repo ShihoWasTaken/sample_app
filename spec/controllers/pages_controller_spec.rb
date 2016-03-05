@@ -4,7 +4,7 @@ RSpec.describe PagesController, type: :controller do
   render_views
 
   before(:each) do
-    @base_title = "Mon site(helper) | "
+    @base_title = "Gem Le Cine | "
   end
 
   describe "GET #home" do

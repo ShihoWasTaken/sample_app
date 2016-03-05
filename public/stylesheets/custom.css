@@ -27,11 +27,20 @@ nav
 	font-size: 105%;
 }
 
+.btn-red, .btn-nav, .btn-table
+{
+	font-family: 'LinuxLibertine';
+}
+
 body
 {
 	font-family: 'Cantarell';
 }
 
+html, body
+{
+	font-size: 105%;
+}
 
 /********************************************************
 *                      General                          *
@@ -39,7 +48,6 @@ body
 html, body
 {
 	height: 100%;
-	font-size: 105%;
 }
 
 .center
@@ -55,6 +63,16 @@ html, body
 	background: url('../images/minions.jpg');
     background-attachment: fixed;
     background-size: cover;
+}
+
+.alert, .nav-pills>li>a 
+{
+	border-radius: 0;
+}
+
+.nopadding
+{
+	padding: 0;
 }
 
 #content
@@ -75,7 +93,21 @@ h1
 	margin: 0;
 	padding: 5px 10px;
 	margin-bottom: 10px;
-	/*font-family: 'LinuxLibertine';*/
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover
+{
+    background-color: lightcoral;
+}
+
+a 
+{
+    color: salmon;
+}
+
+a:focus, a:hover 
+{
+	color: tomato;
 }
 
 /********************************************************
@@ -247,11 +279,25 @@ footer nav .container-fluid
 form
 {
 	padding: 0 70px;
+	font-size: 80%;
 }
 
 .form-control, .input-group-addon
 {
 	border-radius: 0;
+}
+
+.form-group 
+{
+    margin-bottom: 12px;
+}
+
+/* 	Correction pour les erreurs à la soumission de formulaires avec rails
+	Evite de rajouter des saut de lignes superflus pour les champs non valides */
+.field_with_errors {
+  @extend .has-error;
+  display: inline-block;
+  width: 100%;
 }
 
 /********************************************************
@@ -273,4 +319,34 @@ form
 #photo-about
 {
 	width: 100%;
+}
+
+/********************************************************
+*                       Aide                            *
+********************************************************/
+.h600
+{
+	height: 600px;
+}
+
+.h600 h3
+{
+	color: crimson;
+	padding: 0 20px;
+}
+
+/********************************************************
+*                     DataTable                         *
+********************************************************/
+.pagination>li>a, .pagination>li>span
+{
+
+    color: coral;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+{
+
+    background-color: salmon;
+    border-color: tomato;
 }

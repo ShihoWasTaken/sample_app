@@ -16,7 +16,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   render_views
   before(:each) do
-    @base_title = "Mon site(helper) | "
+    @base_title = "Gem Le Cine | "
   end
   describe "GET #new" do
     it "returns http success" do

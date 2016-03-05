@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @age = ((Date.today - @user.birthdate) / 365).floor
+  	@titre = "Profil de " + @user.nom
   end
   def new
   	@user = User.new
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
     end
   end
   def index
+  	@titre = "Liste des membres"
     @users = User.all
   end
   def downloadCV
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   #Génération d'un pdf contenant la liste de tous les utilisateurs
-  def list_pdf
+  def database_dump
     @users = User.all
     respond_to do |format|
       format.html
@@ -63,6 +65,7 @@ class UsersController < ApplicationController
   end
 
   def stats
+  	@titre = "Statistiques"
     @users = User.all
     cine = Array.new
     tv = Array.new
