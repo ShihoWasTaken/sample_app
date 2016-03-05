@@ -1,10 +1,10 @@
 $(function () {
     // On initialise un datepicker Bootstrap
     $('#datetimepicker').datetimepicker({
-        viewMode: 'years',
+        viewMode: 'years',  // On choisit d'abord l'année
         locale: 'fr',
         format: 'L',
-        maxDate: moment().subtract(18,'years').calendar()
+        maxDate: moment().subtract(18,'years') // La date maximale est la date du jour moins 18 années
     });
 
     // On récupère la date du vrai champ et on met à jour le datePicker si elle n'est pas nulle
@@ -30,7 +30,7 @@ $(function () {
         $('#user_birthdate').val(dateFormatted);
     });
 
-    // On remplace le nom des attributs du model avec leur traduction en français pour avoir des messages d'erreurs totalement traduit
+    // On remplace le nom des attributs du model avec leur traduction en français pour avoir des messages d'erreurs totalement traduit et plus explicite
     $('.error-li').each(function () {
     var text = $(this).text();
         text = text.replace("Birthdate","Date de naissance");
@@ -45,6 +45,8 @@ $(function () {
     }); 
 
     // On affiche "je veux lire plus de livres" si l'utilisateur lis plus de 3 livres
+    // Sinon on le cache
+    // Par défaut, le champ et caché
     $('#readMoreBooks').hide();    
     $('#user_readBooks').on('input',function(e){
         if($(this).val() > 3)
@@ -57,8 +59,5 @@ $(function () {
             $('#user_readMoreBooks_false').prop( "checked", true );
         }
     });
-
-
-    $("#new_user").bootstrapValidator();
 
 });

@@ -9,6 +9,7 @@
 <div class="col-xs-12 col-xs-offset-0 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3" id="content">
 	<h1>Informations - <%= @user.nom %></h1>
 	<div>
+		<!-- Partie gauche -->
 		<div class="col-md-5 col-lg-5">
 			<i class="fa fa-user"></i>&nbsp; <%= @user.nom %>
 			<br><i class="fa fa-envelope"></i>&nbsp; <%= @user.email %>
@@ -27,6 +28,7 @@
 				<div class="error"><i class="fa fa-thumbs-down"></i> Ne veut pas lire plus de livres</div>
 			<% end %>
 		</div>
+		<!-- Partie droite -->
 		<div class="col-md-7 col-lg-7 center">
 			<% if !@user.cvPath.nil? %>
 			<div class="col-lg-12 center">
