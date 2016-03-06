@@ -10,7 +10,6 @@
 #  birthdate             :date
 #  readMoreBooks         :boolean
 #  readBooks             :integer
-#  watchedMovies         :integer
 #  cvPath                :string
 #  watchedMoviesCinema   :integer
 #  watchedMoviesTV       :integer
@@ -21,9 +20,22 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+	# Initialisation avant chaque test
 	before(:each) do
-		@attr = { :nom => "Example User", :email => "user@example.com" }
-	end
+    	@attr = 
+    	{ 
+    		:nom => "Kenny GUIOUGOU", 
+        	:birthdate => "11-01-1991",
+    		:email => "kenny.guiougou@example.com",
+    		:readMoreBooks => "true",
+		  	:readBooks => "1",
+		    :watchedMoviesCinema => "7",
+		    :watchedMoviesTV => "2",
+		    :watchedMoviesComputer => "5",
+		    :watchedMoviesTablet => "4",
+		    :cvPath => ""
+    	}
+  	end
 
 	it "devrait creer une nouvelle instance dotee des attributs valides" do
 		User.create!(@attr)

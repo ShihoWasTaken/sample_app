@@ -10,7 +10,6 @@
 #  birthdate             :date
 #  readMoreBooks         :boolean
 #  readBooks             :integer
-#  watchedMovies         :integer
 #  cvPath                :string
 #  watchedMoviesCinema   :integer
 #  watchedMoviesTV       :integer

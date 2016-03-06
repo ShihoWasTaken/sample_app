@@ -10,7 +10,6 @@
 #  birthdate             :date
 #  readMoreBooks         :boolean
 #  readBooks             :integer
-#  watchedMovies         :integer
 #  cvPath                :string
 #  watchedMoviesCinema   :integer
 #  watchedMoviesTV       :integer
@@ -51,7 +50,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "devrait avoir le bon titre" do
         post :create, :user => @attr
-        expect(response).to have_selector("title", :content => "Inscription")
+        have_selector "title", @base_title + "Inscription"
       end
 
       it "devrait rendre la page 'new'" do

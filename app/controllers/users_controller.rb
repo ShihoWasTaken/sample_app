@@ -10,7 +10,6 @@
 #  birthdate             :date
 #  readMoreBooks         :boolean
 #  readBooks             :integer
-#  watchedMovies         :integer
 #  cvPath                :string
 #  watchedMoviesCinema   :integer
 #  watchedMoviesTV       :integer
@@ -30,6 +29,7 @@ class UsersController < ApplicationController
   end
   def create
 	  @user = User.new(user_params)
+    @titre = "Inscription"
     if @user.save
        # Si un CV a été uploadé
       if(params[:user][:file] != nil && params[:user][:file] != "")
@@ -46,7 +46,6 @@ class UsersController < ApplicationController
       end
       redirect_to user_path(@user, just_created: true)
     else
-	    @titre = "Inscription"
 	    render 'new'
     end
   end
@@ -95,10 +94,11 @@ class UsersController < ApplicationController
         aimePasLire += 1
       end
     end
-    @cinemaArray = cine.join(',')
-    @TVArray = tv.join(',')
-    @computerArray = comp.join(',')
-    @tabletArray = tab.join(',')
+    # On trie les arrays pour le boxplot et on sépare les nombres avec une virgule
+    @cinemaArray = cine.sort.join(',')
+    @TVArray = tv.sort.join(',')
+    @computerArray = comp.sort.join(',')
+    @tabletArray = tab.sort.join(',')
     @lecteurs = (lec.to_f * 100.to_f / @users.count.to_f).round(2)
     @nonLecteurs = ((@users.count - lec).to_f * 100.to_f / @users.count.to_f).round(2)
     @totalLecteurs = lec
